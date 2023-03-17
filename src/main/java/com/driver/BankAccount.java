@@ -36,6 +36,7 @@ public class BankAccount {
                     return accNo;
                 }
             }
+            accNo="";
         }
          throw new Exception("Account Number can not be generated");
     }

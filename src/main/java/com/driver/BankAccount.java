@@ -21,24 +21,20 @@ public class BankAccount {
         //Each digit of an account number can lie between 0 and 9 (both inclusive)
         //Generate account number having given number of 'digits' such that the sum of digits is equal to 'sum'
         //If it is not possible, throw "Account Number can not be generated" exception
+       if(sum>digits*9){
+           throw new Exception("Account Number can not be generated");
+       }
+       String accountNumber="";
+       while(sum>9){
+           accountNumber+="9";
+           sum-=9;
+       }
+       accountNumber+=(sum+"");
+       while (accountNumber.length()<digits){
+           accountNumber+="0";
+       }
+       return accountNumber;
 
-
-        String temp=String.valueOf(digits);
-        String accNo="";
-        int ans=0;
-        for(int i=0;i<temp.length();i++){
-            ans=temp.charAt(i)-'0';
-            accNo= String.valueOf(temp.charAt(i));
-            for(int j=i+1;j<temp.length();j++){
-                accNo+=temp.charAt(j);
-                ans+=temp.charAt(j)-'0';
-                if(sum==ans){
-                    return accNo;
-                }
-            }
-            accNo="";
-        }
-         throw new Exception("Account Number can not be generated");
     }
 
     public void deposit(double amount) {
